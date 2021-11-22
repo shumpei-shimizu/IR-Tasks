@@ -1,4 +1,16 @@
+# Objective
 複数の言語で同じテーマのプログラムを作成する実習
+
+## Env
+```
+$ python3 --version
+Python 3.8.10
+$ gcc -v
+gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)
+$ node -v
+v10.19.0
+```
+---
 
 # Languages
 
@@ -13,6 +25,7 @@
 6. Ruby
 7. Java
 
+---
 
 # Problems
 
