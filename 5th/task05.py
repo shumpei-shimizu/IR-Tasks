@@ -15,19 +15,28 @@ class Node :
     def getTailNode (self) :
         if (self.tail == None) : return self
         return self.tail.getTailNode()
+
+    def getTailPrev (self) :
+        if (self.tail.tail == None) : return self
+        return self.tail.getTailPrev()
     
 class ChainedList:
 
     def __init__ (self, value) :
-        node = Node(value, None)
-        self.head = node
+        self.head = Node(value, None)
     
     def addHead (self, value) :
         node = Node(value, self.head)
         self.head = node
 
+    def removeHead (self) :
+        self.head = self.head.tail
+
     def addTail (self, value) :
         self.head.getTailNode().tail = Node(value, None)
+
+    def removeTail (self) :
+        self.head.getTailPrev().tail = None
 
     def insert (self, value, index) :
         if (index == 0) : 
@@ -39,6 +48,16 @@ class ChainedList:
         target = self.head.getPrevOf(index)
         node = Node(value, target.tail)
         target.tail = node
+
+    def remove (self, index) :
+        if (index == 0) :
+            self.removeHead()
+            return
+        if (index < 0) :
+            self.removeTail()
+            return
+        target = self.head.getPrevOf(index)
+        target.tail = target.tail.tail
 
     def printValues (self) :
         target = self.head
@@ -66,5 +85,14 @@ chainedList.insert("nice", 4)
 chainedList.printValues()
 
 chainedList.insert("bye!", -1)
+chainedList.printValues()
+
+chainedList.remove(0)
+chainedList.printValues()
+
+chainedList.remove(-1)
+chainedList.printValues()
+
+chainedList.remove(2)
 chainedList.printValues()
 
