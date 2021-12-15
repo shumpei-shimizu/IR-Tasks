@@ -14,3 +14,6 @@ class MyClass {
 myObject = new MyClass(101, "I am a pen.");
 myObject.printStatus();
 
+console.log(myObject.key);
+console.log(myObject.str);
+

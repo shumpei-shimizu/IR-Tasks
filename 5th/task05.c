@@ -48,7 +48,9 @@ void addTail(Node_t* head, char* str) {
 }
 
 void removeTail(Node_t* head) {
+	Node_t* tail_node = getTailPrev(head)->tail;
 	getTailPrev(head)->tail = NULL;
+	free(tail_node);
 }
 
 Node_t* addHead(Node_t* head, char* str) {
@@ -59,7 +61,9 @@ Node_t* addHead(Node_t* head, char* str) {
 }
 
 Node_t* removeHead(Node_t* head) {
-	return head->tail;
+	Node_t* new_head = head->tail;
+	free(head);
+	return new_head;
 }
 
 Node_t* insert(Node_t* head, char* str, int index) {
@@ -87,7 +91,9 @@ Node_t* removeNode(Node_t* head, int index) {
 		return removeHead(head);
 	}
 	Node_t* target = getPrevOf(head, index);
+	Node_t* term_node = target->tail;
 	target->tail = target->tail->tail;
+	free(term_node);
 	return head;
 }
 
